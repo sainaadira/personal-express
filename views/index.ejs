@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Righteous&display=swap" rel="stylesheet">
+  <title>Mood tracker</title>
+</head>
+
+<body>
+
+  <h1>Mood Tracker:</h1>
+  <h3>Find ways to shed light on your days</h3>
+  <main>
+
+
+    <h3 class="date">Today's date: <span class="today-date"></span></h3>
+
+    <p>Write a highlight of your day today
+      and choose a colour to coordinate with how you feel.</p>
+
+    <form action="/messages" method="POST">
+
+      <!-- the parameters in the server js come from the form with name -->
+      <input id="inputValue" type="text" placeholder="Today's highlight was.." name="msg">
+      <button type="submit">Submit</button>
+
+    </form>
+
+    <section class="messages">
+      <button id="trash" type="button" name="delete">Delete</button>
+      <% if(messages.length>0){
+            const moodClass= messages[messages.length-1].mood
+            %>
+      <span style="color:#<%=moodClass%>"><%= messages[messages.length-1].msg %></span>
+      <%}%>
+    </section>
+
+      <% if (messages.length>0){  %>
+      <h3 class="color">Choose a colour:</h3>
+      <p>what colour best describes your mood?</p>
+      <input id="yellow" type="button" value="Happy">
+      <input id="grey" type="button" value="Neutral">
+      <input id="blue" type="button" value="Sad">
+      <input id="red" type="button" value="Angry">
+      <%  } %>
+
+
+  </main>
+
+
+
+
+  <script src="main.js"></script>
+
+</body>
+
+</html>
